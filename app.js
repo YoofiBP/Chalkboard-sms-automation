@@ -26,7 +26,7 @@ request.post({url:loginUrl, formData:formData}, function(err, response, body){
         };
         //var data = JSON.stringify(users);
         //console.log('data: ', data);
-        
+        /*
         var options = {
             url: "https://api.chalkboard.education/api/users/sendSMS/",
             method: "POST",
@@ -35,15 +35,23 @@ request.post({url:loginUrl, formData:formData}, function(err, response, body){
                 'Content-Type':'multipart/form-data'
             },
             formData :users
-        };
+        };*/
 
+        request.get({url:"https://api.chalkboard.education/api/cohorts/Vejre/users", headers:{'Authorization':'Bearer '+ access_token, 'Content-Type':'multipart/form-data'}}, function(err2,response2,body2){
+            if(err2){
+                console.log(err);
+            }else{
+                console.log(JSON.parse(body2).selected);
+            }
+        });
+        /*
         request(options, function(err2, response2, body2){
             if(err2){
                 console.log(err2);
             }else{
                 console.log(JSON.parse(body2));
             }
-        });
+        });*/
 /*
         const url = "https://api.chalkboard.education/api/users/sendSMS/";
 
